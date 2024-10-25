@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import "../style.css";
 import eyeImg from "../assets/img/eye.png";
 import phoneImg from "../assets/img/phone-call.png";
@@ -13,8 +13,11 @@ interface RegisterProps {
 
 const Register: FC<RegisterProps> = ({ goToLogin }) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [passwords, setPasswords] = useState<{password:string, confirmPassword:string, passwordError: string}>({
+    password: "", 
+    confirmPassword: "", 
+    passwordError: ""
+  })
   const [AgreeToTerms, setAgreeToTerms] = useState<boolean>(false);
   const [goToTermsOverlay, setToTermsOverlay] = useState<boolean>(false);
   const [goToprivacyOverlay, setToPrivacyOverlay] = useState<boolean>(false);
@@ -22,16 +25,23 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      console.error("Passwords do not match");
+    if (passwords.password !== passwords.confirmPassword) {
+      setPasswords((prev) => ({...prev, passwordError: "Password mismatch"}))
       return;
     }
-    console.log("Registering", { phoneNumber, password });
+    setPasswords((prev) => ({ ...prev, passwordError: "" })); // Clear error if passwords match
+    console.log("Registering", { phoneNumber, password: passwords.password });
+
   };
 
   const togglePasswordVisibility = () =>{
     setshowPassword(!showPassword);
+  };
+  
+
+  const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setPasswords((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClickgotooverlay = () => setToTermsOverlay(true);
@@ -59,11 +69,12 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
 
         <div className="inputs-div">
           <input
+          name="password"
             className="inputs"
             type={showPassword? "text":"password"}
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={passwords.password}
+            onChange={handleChangePassword}
             minLength={3}
             maxLength={10}
             required
@@ -79,11 +90,12 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
 
         <div className="inputs-div">
           <input
+          name="confirmPassword"
             className="inputs"
             type={showPassword? "text":"password"}
             placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={passwords.confirmPassword}
+            onChange={handleChangePassword}
             minLength={3}
             maxLength={10}
             required
@@ -96,6 +108,12 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
         style={{cursor:'pointer'}}
         />
         </div>
+
+        {passwords.passwordError && (
+          <div className="error-message">
+            {passwords.passwordError}
+          </div>
+        )}
 
         <div className="policy-section">
           <input
