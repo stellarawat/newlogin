@@ -4,7 +4,7 @@ export const PrivacyPolicy: FC = () => {
     return (
         <>
                 <span>
-                <h1 style={{fontFamily:'sans-serif', fontSize: '18px',textDecoration: 'underline'}}>Privacy Policy</h1>
+                <h1 style={{fontFamily:'sans-serif', fontSize: '18px',textDecoration: 'underline', marginTop:'30px'}}>Privacy Policy</h1>
                     <p>
                         Welcome to Tushinde! We value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information in accordance with Kenyan and international data protection regulations.
                     </p>

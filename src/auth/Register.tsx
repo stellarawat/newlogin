@@ -130,7 +130,10 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
 
       {goToprivacyOverlay && (
         <div className="overlay">
-          <img className="close-transaction-button-content" src={CloseImg} alt="Close" onClick={handleClickexitoverlayPrivacy} />
+        <div className="close-transaction-button-content">
+          <img className="backImg" src={CloseImg} alt="Close" onClick={handleClickexitoverlayPrivacy} />
+        </div>
+
           <div className="overlay-content">
             <PrivacyPolicy />
           </div>
@@ -139,7 +142,10 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
 
       {goToTermsOverlay && (
         <div className="overlay">
-          <img className="close-transaction-button-content" src={CloseImg} alt="Close" onClick={handleClickexitoverlay} />
+          <div className="close-transaction-button-content">
+            <img className="backImg" src={CloseImg} alt="Close" onClick={handleClickexitoverlay} />
+          </div>
+          
           <div className="overlay-content">
             <TermsAndConditions />
           </div>

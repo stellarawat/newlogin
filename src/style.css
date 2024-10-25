@@ -272,9 +272,12 @@ a:hover {
 
 }
 .close-transaction-button-content{
-  position: relative;
-  right: 230px;
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 5px;
 }
 
+.backImg {
+  width: 34px;
+  height: 34px;
+}
