@@ -2,6 +2,7 @@ import { FC, FormEvent, useState } from "react";
 import "../style.css";
 import eyeImg from "../assets/img/eye.png";
 import phoneImg from "../assets/img/phone-call.png";
+import eyeclossedImg from "../assets/img/eye-clossed.png";
 
 interface LoginProps {
   goToRegister: () => void; 
@@ -13,11 +14,17 @@ const Login: FC<LoginProps> = ({ goToRegister, goToForgotPassword }) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const [showPassword, setshowPassword]=useState<boolean>(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Logging in with", { phoneNumber, password, rememberMe });
   };
+
+  const togglePasswordVisibility = () =>{
+    setshowPassword(!showPassword);
+  };
+
 
   return (
     <div className="login-container">
@@ -40,15 +47,21 @@ const Login: FC<LoginProps> = ({ goToRegister, goToForgotPassword }) => {
     <div className="inputs-div">
       <input
         className="inputs"
-        type="password"
+        type={showPassword? "text":"password"}
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) =>setPassword(e.target.value)}
         minLength={3}
         maxLength={15}
         required
       />
-      <img className="icon-img" src={eyeImg} alt="Eye" />
+
+      <img className="icon-img" 
+      src={showPassword?eyeImg:eyeclossedImg} 
+      alt="toggle Password Visibility"
+      onClick={togglePasswordVisibility}
+      style={{cursor:'pointer'}}
+      />
     </div>
 
     <div className="options-container">

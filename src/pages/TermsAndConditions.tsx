@@ -4,6 +4,7 @@ export const TermsAndConditions: FC = () => {
     return (
         <>
                 <span>
+                    <h1 style={{fontFamily:'sans-serif', fontSize: '18px',textDecoration: 'underline'}}>Terms And Conditions</h1>
                     <p>
                         Welcome to Tushinde! Before participating in any of our lottery games, please carefully read these terms and conditions, which are in accordance with the Betting Control and Licensing Board (BCLB) Kenya regulations.
                     </p>

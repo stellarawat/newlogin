@@ -44,7 +44,7 @@ body {
   width: 100%;
   padding: 10px;
 }
-
+/* header */
 .header {
   font-size: 20px;
   font-weight: 700;
@@ -172,6 +172,7 @@ body {
   text-align: left;
 }
 /*  all buttons */
+
 button {
   border: none;
   border-radius: 18px;
@@ -182,7 +183,22 @@ button {
   width: 100%;
   margin-top: 20px;
   padding: 20px;
+  
 }
+
+.button-active {
+  background-color: #9e2db4;
+  color: white;
+  cursor: pointer;
+}
+
+.button-inactive {
+  background-color: #b396bb;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+/* login hover */
 
 button:hover {
   background-color: #b396bb;
@@ -247,7 +263,7 @@ a:hover {
 .overlay-content{
   top: 0;
   height: 100vh;
-  padding: 20px;
+  padding: 10px;
   font-size: 14px;
   cursor: pointer;
   overflow: scroll;
@@ -257,7 +273,7 @@ a:hover {
 }
 .close-transaction-button-content{
   position: relative;
-  right: 200px;
+  right: 230px;
   width: 40px;
   height: 40px;
 }
