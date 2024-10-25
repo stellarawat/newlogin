@@ -1,15 +1,8 @@
 import {FC} from "react";
-import CloseImg from "../assets/img/close.png";
 
-interface TermsAndConditionsProps {
-    onBack: () => void;
-}
-
-export const TermsAndConditions: FC<TermsAndConditionsProps> = ({onBack}) => {
+export const TermsAndConditions: FC = () => {
     return (
-        <div>
-            <img className="close-transaction-button" src={CloseImg} alt="Close" onClick={onBack}/>
-            <div style={{marginTop: "30px", padding: '8px'}}>
+        <>
                 <span>
                     <p>
                         Welcome to Tushinde! Before participating in any of our lottery games, please carefully read these terms and conditions, which are in accordance with the Betting Control and Licensing Board (BCLB) Kenya regulations.
@@ -49,31 +42,30 @@ export const TermsAndConditions: FC<TermsAndConditionsProps> = ({onBack}) => {
 
                     <p> 5. Responsible Gaming </p>
                     <span>
-                     Tushinde promotes responsible gaming practices. Gambling should be fun, but it also has the potential to be addictive. Players are encouraged to play responsibly and within their means. If you or someone you know has a gambling problem, please seek help from professional organizations.
+                    Tushinde promotes responsible gaming practices. Gambling should be fun, but it also has the potential to be addictive. Players are encouraged to play responsibly and within their means. If you or someone you know has a gambling problem, please seek help from professional organizations.
                     </span>
 
                     <p> 6. Compliance with BCLB Regulations </p>
                     <span>
-                     Tushinde operates under the regulations of the Betting Control and Licensing Board (BCLB) Kenya. All games are conducted in a fair and transparent manner, and all players are treated equally under these regulations
+                    Tushinde operates under the regulations of the Betting Control and Licensing Board (BCLB) Kenya. All games are conducted in a fair and transparent manner, and all players are treated equally under these regulations
                     </span>
 
                     <p> 7. Amendments to Terms and Conditions </p>
                     <span>
-                     Tushinde reserves the right to amend these terms and conditions at any time. Any changes will be communicated via the Tushinde website, and it is the player's responsibility to review these changes.
+                    Tushinde reserves the right to amend these terms and conditions at any time. Any changes will be communicated via the Tushinde website, and it is the player's responsibility to review these changes.
                     </span>
 
                     <p> 8. Liability </p>
                     <span>
-                     Tushinde shall not be held liable for any loss, injury, or damage caused by the participation in its games. Participation in the lottery is at the player’s own risk.
+                    Tushinde shall not be held liable for any loss, injury, or damage caused by the participation in its games. Participation in the lottery is at the player’s own risk.
                     </span>
 
                     <p> 9. Privacy Policy </p>
                     <span>
-                        All personal information collected from players during registration and participation will be used solely for the purposes of the lottery and in accordance with Kenyan data protection laws. Tushinde will not sell or share personal data with third parties without consent.
+                    All personal information collected from players during registration and participation will be used solely for the purposes of the lottery and in accordance with Kenyan data protection laws. Tushinde will not sell or share personal data with third parties without consent.
                     </span>
 
                 </span>
-            </div>
-        </div>
+            </>
     );
 };

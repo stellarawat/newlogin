@@ -5,9 +5,11 @@ import phoneImg from "../assets/img/phone-call.png";
 
 interface LoginProps {
   goToRegister: () => void; 
+  goToForgotPassword :()=> void ;
+
 }
 
-const Login: FC<LoginProps> = ({ goToRegister }) => {
+const Login: FC<LoginProps> = ({ goToRegister, goToForgotPassword }) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -51,7 +53,7 @@ const Login: FC<LoginProps> = ({ goToRegister }) => {
 
     <div className="options-container">
       <div className="forget">
-        <a href="#" onClick={(e) => e.preventDefault()}>
+        <a href="#" onClick={goToForgotPassword}>
           Forgot Password?
         </a>
       </div>

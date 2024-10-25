@@ -1,15 +1,8 @@
 import {FC} from "react";
-import CloseImg from "../assets/close.png";
 
-interface PrivacyPolicyProps {
-    onBack: () => void;
-}
-
-export const PrivacyPolicy: FC<PrivacyPolicyProps> = ({onBack}) => {
+export const PrivacyPolicy: FC = () => {
     return (
-        <div>
-            <img className="close-transaction-button" src={CloseImg} alt="Close" onClick={onBack}/>
-            <div style={{marginTop: "30px", padding: '8px'}}>
+        <>
                 <span>
                     <p>
                         Welcome to Tushinde! We value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, and safeguard your information in accordance with Kenyan and international data protection regulations.
@@ -91,7 +84,6 @@ export const PrivacyPolicy: FC<PrivacyPolicyProps> = ({onBack}) => {
                         Phone: +254111050420
                     </span>
                 </span>
-            </div>
-        </div>
+        </>
     );
 };

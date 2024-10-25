@@ -2,22 +2,33 @@ import { useState } from 'react';
 import "./style.css";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { TermsAndConditions } from './pages/TermsAndConditions';
+import ForgotPassword from "./pages/ForgotPassword";
+
 
 const App = () => {
-  const [isLoginPage, setIsLoginPage] = useState(true);
-  
+  const [currentPage, setCurrentPage] = useState<'login' | 'register' | 'forgotPassword'>('login');
+
   return (
-    <div className="auth-container">
-
-      {isLoginPage ? (
-      <Login goToRegister ={()=> setIsLoginPage(false)} />
-      ) : (
-      <Register goToLogin = {() => setIsLoginPage(true)} />
-
+    <>
+      <div className="auth-container">
+      {currentPage === 'login' && (
+        <Login 
+          goToRegister={() => setCurrentPage('register')} 
+          goToForgotPassword={() => setCurrentPage('forgotPassword')} 
+        />
+      )}
+      
+      {currentPage === 'register' && (
+        <Register 
+          goToLogin={() => setCurrentPage('login')}
+        />
       )}
 
-    </div>
+      {currentPage === 'forgotPassword' && (
+        <ForgotPassword goToLogin={() => setCurrentPage('login')} />
+      )} </div>
+    
+    </>
   );
 };
 

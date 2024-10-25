@@ -2,16 +2,23 @@ import { FC, FormEvent, useState } from "react";
 import "../style.css";
 import eyeImg from "../assets/img/eye.png";
 import phoneImg from "../assets/img/phone-call.png";
+import CloseImg from "../assets/img/close.png";
+import { TermsAndConditions } from "../pages/TermsAndConditions";
+import { PrivacyPolicy } from "../pages/PrivacyPolicy";
 
 interface RegisterProps {
   goToLogin: () => void;  
 }
+
 
 const Register: FC<RegisterProps> = ({ goToLogin }) => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [AgreeToTerms, setAgreeToTerms] = useState<boolean>(false);
+  const [goToTermsOverlay , setToTermsOverlay] =useState<boolean>(false)
+  const [goToprivacyOverlay , setToPrivacyOverlay] =useState<boolean>(false)
+ 
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -22,7 +29,10 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
     }
     console.log("Registering", { phoneNumber, password });
   };
-
+  const handleClickgotooverlay=()=> setToTermsOverlay(true)
+  const handleClickexitoverlay=()=> setToTermsOverlay(false)
+  const handleClickgotooverlayPrivacy=()=> setToPrivacyOverlay(true)
+  const handleClickexitoverlayPrivacy=()=> setToPrivacyOverlay(false)
   return (
     <div className="login-container">
       <span className="header">REGISTER</span>
@@ -79,8 +89,11 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
           />
           <label htmlFor="terms">
             By checking this box, I hereby confirm that I agree with the{" "}
-            <a href="#">Terms and Conditions</a>, the{" "}
-            <a href="#">Privacy Policy</a>, that I am 18 years old or over, and
+            
+            <a href="#" onClick={handleClickgotooverlay}>Terms and Conditions, </a> the{" "}
+          
+          
+          <a href="#" onClick={handleClickgotooverlayPrivacy}>Privacy Policy</a>, that I am 18 years old or over, and
             that all information given is true.
           </label>
         </div>
@@ -96,6 +109,21 @@ const Register: FC<RegisterProps> = ({ goToLogin }) => {
           </a>
         </p>
       </div>
+
+      {goToprivacyOverlay &&(
+        <div className="overlay"> 
+        <img className="close-transaction-button-content" src={CloseImg} alt="Close" onClick={handleClickexitoverlayPrivacy}/>
+        <div className="overlay-content">
+        <PrivacyPolicy/></div>
+</div>
+)}
+      {goToTermsOverlay &&(
+        <div className="overlay"> 
+        <img className="close-transaction-button-content" src={CloseImg} alt="Close" onClick={handleClickexitoverlay}/>
+        <div className="overlay-content">
+        <TermsAndConditions/></div>
+</div>
+)}
     </div>
   );
 };
